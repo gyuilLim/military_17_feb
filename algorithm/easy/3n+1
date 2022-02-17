@@ -1,0 +1,33 @@
+/* Find maximum number of cycle from given section. That cycle means If given number is even, divide it into two, or multiply by 3 and add 1. */
+
+#include <iostream>
+using namespace std;
+
+int cycle_3n_plus_1(int a) {
+	int count = 0;
+	while (a != 1) {
+		if (a % 2 == 0) {
+			a = a / 2;
+		}
+		else {
+			a = 3 * a + 1;
+		}
+		count++;
+	}
+	return ++count;
+}
+
+int main() {
+	int a, b;
+	cin >> a >> b;
+	
+	int count_max = 0;
+	for (int i = a; i <= b; i++) {
+		if (count_max < cycle_3n_plus_1(i)) {
+			count_max = cycle_3n_plus_1(i);
+		}
+	}
+	cout << count_max << endl;
+	
+	return 0;
+}
