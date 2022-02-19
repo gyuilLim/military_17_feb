@@ -1,0 +1,26 @@
+/*Find Sum value of specific section from given array*/
+
+#include <iostream>
+using namespace std;
+int main() {
+	int size_of_array;
+	cin >> size_of_array;
+	
+	int *array = new int[size_of_array];
+	
+	for (int i = 0; i < size_of_array; i++) {
+		cin >> array[i];
+	}
+	
+	int start, end;
+	cin >> start >> end;
+	
+	int sum = 0;
+	for (int i = start; i <= end; i++) {
+		sum += array[i-1];
+	}
+	
+	cout << sum << endl;
+	
+	return 0;
+}
