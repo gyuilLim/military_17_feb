@@ -1,0 +1,51 @@
+/* Find combined and sorted array from given 2 arrays */
+
+#include <iostream>
+using namespace std;
+
+void print_array(int* array, int size) {
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+	return;
+}
+
+int* swap(int* array, int i, int j) {
+	int temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+	return array;
+}
+
+int* sort_array(int* array, int size){
+	int min_index = 0;
+	for (int i = 0; i < size - 1; i++) {
+		min_index = i;
+		for (int j = i+1; j < size; j++) {
+			if (array[j] < array[min_index]) {
+				min_index = j;
+			}
+		}
+		swap(array, i, min_index);
+	}
+	return array;
+}
+
+int main() {
+	int size_of_array1, size_of_array2;
+	cin >> size_of_array1 >> size_of_array2;
+	
+	int total_size = size_of_array1 + size_of_array2;
+	int* array = new int[total_size];
+	
+	for (int i = 0; i < total_size; i++) {
+		cin >> array[i];
+	}
+	
+	array = sort_array(array, total_size);
+	
+	print_array(array, total_size);
+
+	
+	return 0;
+}
